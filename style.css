@@ -1,0 +1,274 @@
+:root {
+            --uas-azul: #003366; /* Azul marino institucional */
+            --uas-azul-claro: #004b87;
+            --uas-dorado: #D4AF37; /* Dorado elegante */
+            --uas-amarillo: #FFCC00; /* Amarillo vibrante UAS */
+            --blanco: #ffffff;
+            --gris-fondo: #f4f6f9;
+            --texto-oscuro: #333333;
+            --texto-claro: #666666;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--gris-fondo);
+            color: var(--texto-oscuro);
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Encabezado Institucional */
+        header {
+            background-color: var(--uas-azul);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 4px solid var(--uas-dorado);
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 800;
+            color: var(--blanco);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--uas-dorado);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--uas-dorado);
+        }
+
+        .btn-instagram-nav {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            padding: 8px 20px;
+            border-radius: 25px;
+            color: white !important;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .btn-instagram-nav:hover {
+            transform: scale(1.05);
+            color: white;
+        }
+
+        /* Sección Hero */
+        .hero {
+            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            color: var(--blanco);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            color: var(--uas-dorado);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        /* Contenedores de Secciones */
+        .seccion {
+            padding: 60px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            color: var(--uas-azul);
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .titulo-seccion::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--uas-dorado);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Grid Dual (Efemérides y Datos) */
+        .grid-dual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        /* Tarjetas estilo widget */
+        .widget {
+            background: var(--blanco);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--uas-azul);
+        }
+
+        .widget h3 {
+            color: var(--uas-azul);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .widget-icono {
+            font-size: 1.5em;
+        }
+
+        /* Lista de Efemérides */
+        .lista-efemerides {
+            list-style: none;
+            padding: 0;
+        }
+
+        .lista-efemerides li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            gap: 15px;
+        }
+
+        .fecha-badge {
+            background-color: var(--uas-dorado);
+            color: var(--uas-azul);
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            min-width: 60px;
+            text-align: center;
+            height: fit-content;
+        }
+
+        /* Dato del Día */
+        .dato-destacado {
+            font-size: 1.2em;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--texto-claro);
+            padding: 20px;
+            background-color: var(--gris-fondo);
+            border-left: 5px solid var(--uas-dorado);
+            border-radius: 0 8px 8px 0;
+            margin-top: 20px;
+        }
+
+        /* Sección Deportes */
+        .grid-deportes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card-deporte {
+            background: var(--blanco);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card-deporte:hover {
+            transform: translateY(-5px);
+        }
+
+        .categoria-etiqueta {
+            position: absolute;
+            background: var(--uas-dorado);
+            color: var(--uas-azul);
+            padding: 5px 15px;
+            font-weight: bold;
+            font-size: 0.8em;
+            border-radius: 0 0 10px 0;
+            z-index: 10;
+        }
+
+        .card-deporte img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .card-contenido {
+            padding: 20px;
+        }
+
+        .card-contenido h4 {
+            margin: 0 0 10px;
+            color: var(--uas-azul);
+            font-size: 1.3em;
+        }
+
+        .card-contenido p {
+            color: var(--texto-claro);
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        footer {
+            background-color: var(--uas-azul);
+            color: var(--blanco);
+            text-align: center;
+            padding: 30px;
+            border-top: 5px solid var(--uas-dorado);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .grid-dual {
+                grid-template-columns: 1fr;
+            }
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
