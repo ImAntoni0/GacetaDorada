@@ -3,210 +3,414 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaceta Dorada</title>
+    <title>Gaceta Dorada | Portal Universitario</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* Variables de color para mantener la estética dorada */
+        /* Paleta de colores estilo UAS */
         :root {
-            --dorado: #d4af37;
-            --oscuro: #121212;
-            --claro: #f4f4f4;
-            --gris: #1e1e1e;
+            --uas-azul: #003366; /* Azul marino institucional */
+            --uas-azul-claro: #004b87;
+            --uas-dorado: #D4AF37; /* Dorado elegante */
+            --uas-amarillo: #FFCC00; /* Amarillo vibrante UAS */
+            --blanco: #ffffff;
+            --gris-fondo: #f4f6f9;
+            --texto-oscuro: #333333;
+            --texto-claro: #666666;
+        /* Regla para evitar que los bordes y margenes rompan el tamaño*/
+            *, *::before, *::after{
+                box-sizing: border-box;
+            }
         }
 
         body {
             margin: 0;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--oscuro);
-            color: var(--claro);
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--gris-fondo);
+            color: var(--texto-oscuro);
             scroll-behavior: smooth;
+            overflow-x: hidden;
+            width: 100%;
         }
 
-        /* Encabezado fijo */
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Encabezado Institucional */
         header {
-            background-color: #000;
-            padding: 20px 50px;
+            background-color: var(--uas-azul);
+            padding: 15px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid var(--dorado);
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 4px solid var(--uas-dorado);
         }
 
         .logo {
-            font-size: 2em;
-            font-weight: bold;
-            color: var(--dorado);
+            font-size: 1.8em;
+            font-weight: 800;
+            color: var(--blanco);
             text-transform: uppercase;
-            letter-spacing: 3px;
-            cursor: pointer;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--uas-dorado);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
         }
 
         nav a {
-            color: var(--claro);
+            color: var(--blanco);
             text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 0.95em;
+            text-transform: uppercase;
             transition: color 0.3s ease;
         }
 
         nav a:hover {
-            color: var(--dorado);
+            color: var(--uas-dorado);
         }
 
-        /* Sección principal (Hero) */
+        .btn-instagram-nav {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            padding: 8px 20px;
+            border-radius: 25px;
+            color: white !important;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .btn-instagram-nav:hover {
+            transform: scale(1.05);
+            color: white;
+        }
+
+        /* Sección Hero */
         .hero {
+            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            color: var(--blanco);
             text-align: center;
-            padding: 120px 20px;
-            /* Imagen de fondo genérica de alta calidad */
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            padding: 100px 20px;
         }
 
         .hero h1 {
-            font-size: 4.5em;
-            color: var(--dorado);
-            margin-bottom: 10px;
-            transition: all 0.3s ease;
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            color: var(--uas-dorado);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .hero p {
             font-size: 1.2em;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
         }
 
-        .btn {
-            background-color: var(--dorado);
-            color: #000;
-            padding: 15px 35px;
-            text-decoration: none;
-            font-size: 1.1em;
-            font-weight: bold;
-            border-radius: 30px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px var(--dorado);
-        }
-
-        /* Sección de contenido */
-        .content {
+        /* Contenedores de Secciones */
+        .seccion {
             padding: 60px 50px;
-            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .grid {
+        .titulo-seccion {
+            text-align: center;
+            color: var(--uas-azul);
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .titulo-seccion::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--uas-dorado);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Grid Dual (Efemérides y Datos) */
+        .grid-dual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        /* Tarjetas estilo widget */
+        .widget {
+            background: var(--blanco);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--uas-azul);
+        }
+
+        .widget h3 {
+            color: var(--uas-azul);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .widget-icono {
+            font-size: 1.5em;
+        }
+
+        /* Lista de Efemérides */
+        .lista-efemerides {
+            list-style: none;
+            padding: 0;
+        }
+
+        .lista-efemerides li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            gap: 15px;
+        }
+
+        .fecha-badge {
+            background-color: var(--uas-dorado);
+            color: var(--uas-azul);
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            min-width: 60px;
+            text-align: center;
+            height: fit-content;
+        }
+
+        /* Dato del Día */
+        .dato-destacado {
+            font-size: 1.2em;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--texto-claro);
+            padding: 20px;
+            background-color: var(--gris-fondo);
+            border-left: 5px solid var(--uas-dorado);
+            border-radius: 0 8px 8px 0;
+            margin-top: 20px;
+        }
+
+        /* Sección Deportes */
+        .grid-deportes {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 40px;
         }
 
-        .card {
-            background-color: var(--gris);
-            border: 1px solid #333;
+        .card-deporte {
+            background: var(--blanco);
             border-radius: 10px;
             overflow: hidden;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--dorado);
+        .card-deporte:hover {
+            transform: translateY(-5px);
         }
 
-        .card img {
+        .categoria-etiqueta {
+            position: absolute;
+            background: var(--uas-dorado);
+            color: var(--uas-azul);
+            padding: 5px 15px;
+            font-weight: bold;
+            font-size: 0.8em;
+            border-radius: 0 0 10px 0;
+            z-index: 10;
+        }
+
+        .card-deporte img {
             width: 100%;
-            height: 250px;
+            height: 200px;
             object-fit: cover;
+            position: relative;
         }
 
-        .card h3 {
-            padding: 20px 20px 5px;
-            color: var(--dorado);
-            margin: 0;
+        .card-contenido {
+            padding: 20px;
         }
 
-        .card p {
-            padding: 0 20px 20px;
-            color: #aaa;
+        .card-contenido h4 {
+            margin: 0 0 10px;
+            color: var(--uas-azul);
+            font-size: 1.3em;
+        }
+
+        .card-contenido p {
+            color: var(--texto-claro);
+            font-size: 0.95em;
             line-height: 1.5;
         }
 
         footer {
+            background-color: var(--uas-azul);
+            color: var(--blanco);
             text-align: center;
             padding: 30px;
-            background-color: #000;
-            border-top: 1px solid var(--dorado);
+            border-top: 5px solid var(--uas-dorado);
+        }
+
+/* Responsive (Adaptación para celulares) */
+        @media (max-width: 768px) {
+            .grid-dual {
+                grid-template-columns: 1fr;
+            }
+            
+            
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 20px; 
+            }
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px; 
+            }
+            
+            
+            .seccion {
+                padding: 40px 20px; 
+            }
+            
+            
+            .hero {
+                padding: 60px 20px;
+            }
+            .hero h1 {
+                font-size: 2.2em; 
+            }
+            .titulo-seccion {
+                font-size: 1.8em;
+            }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">Gaceta Dorada</div>
+    <div class="logo">Gaceta <span>Dorada</span></div>
     <nav>
         <a href="#inicio">Inicio</a>
-        <a href="#novedades">Novedades</a>
-        <a href="https://www.instagram.com/gacetadorada?igsh=OGdsdzQyYzI2OGFp" target="_blank">Instagram</a>
+        <a href="#sabias-que">Conocimiento</a>
+        <a href="#deportes">Deportes</a>
+        <a href="https://www.instagram.com/gacetadorada?igsh=OGdsdzQyYzI2OGFp" target="_blank" class="btn-instagram-nav">Síguenos en Instagram</a>
     </nav>
 </header>
 
 <section class="hero" id="inicio">
-    <h1 id="titulo-dinamico">Gaceta Dorada</h1>
-    <p>La fuente más brillante de información y estilo. Explora nuestras últimas publicaciones y sé parte de la comunidad dorada.</p>
-    <a href="https://www.instagram.com/gacetadorada?igsh=OGdsdzQyYzI2OGFp" target="_blank" class="btn">Síguenos en Instagram</a>
+    <h1>Conocimiento, Cultura y Deporte</h1>
+    <p>Bienvenidos a Gaceta Dorada, el espacio diseñado para la comunidad universitaria y el público en general. Descubre las efemérides que marcaron historia, datos que te sorprenderán y la actualidad deportiva.</p>
 </section>
 
-<section class="content" id="novedades">
-    <h2 style="color: var(--dorado); font-size: 2.5em;">Publicaciones Destacadas</h2>
-    <div class="grid" id="contenedor-articulos">
+<section class="seccion" id="sabias-que">
+    <div class="grid-dual">
+        <div class="widget">
+            <h3><span class="widget-icono">📅</span> Efemérides de México</h3>
+            <p>Un día como hoy en la historia de nuestro país:</p>
+            <ul class="lista-efemerides" id="contenedor-efemerides">
+                </ul>
         </div>
+
+        <div class="widget">
+            <h3><span class="widget-icono">💡</span> ¿Sabías qué?</h3>
+            <p>El dato interesante del día para alimentar tu curiosidad:</p>
+            <div class="dato-destacado" id="dato-del-dia">
+                </div>
+        </div>
+    </div>
+</section>
+
+<section class="seccion" id="deportes">
+    <h2 class="titulo-seccion">Actualidad Deportiva</h2>
+    <div class="grid-deportes">
+        <div class="card-deporte">
+            <div class="categoria-etiqueta">Deporte Universitario</div>
+            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Deportes UAS">
+            <div class="card-contenido">
+                <h4>Águilas de la UAS rumbo a la Universiada</h4>
+                <p>Nuestros atletas universitarios continúan su preparación intensiva buscando poner en alto el orgullo azul y oro en las próximas competencias nacionales.</p>
+            </div>
+        </div>
+
+        <div class="card-deporte">
+            <div class="categoria-etiqueta">Béisbol Profesional</div>
+            <img src="https://images.unsplash.com/photo-1508344928928-7165b67de128?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Béisbol">
+            <div class="card-contenido">
+                <h4>Temporada de la Liga del Pacífico</h4>
+                <p>Resumen de los encuentros más emocionantes de la semana en la LMP y el desempeño de los equipos sinaloenses en el diamante.</p>
+            </div>
+        </div>
+
+        <div class="card-deporte">
+            <div class="categoria-etiqueta">Fútbol Nacional</div>
+            <img src="https://images.unsplash.com/photo-1518605368461-1e1e12760bf0?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Cancha de futbol">
+            <div class="card-contenido">
+                <h4>Cierre de torneo espectacular</h4>
+                <p>La tabla de posiciones se aprieta de cara a la liguilla del fútbol mexicano. Análisis de los equipos favoritos para llevarse el campeonato.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
 <footer>
-    <p>&copy; 2026 Gaceta Dorada. Todos los derechos reservados.</p>
+    <p>&copy; 2026 Gaceta Dorada - Proyecto de Servicio Social. Estilo Institucional Universitario.</p>
 </footer>
 
 <script>
-    // JAVASCRIPT: Agrega interactividad y carga de datos dinámica
     document.addEventListener("DOMContentLoaded", () => {
+        // --- 1. DATOS DEL DÍA (Generador Aleatorio) ---
+        const datosCuriosos = [
+            "La Universidad Autónoma de Sinaloa (UAS) fue fundada originalmente en 1873 como el Liceo Rosales.",
+            "México es el país con mayor número de hispanohablantes en el mundo.",
+            "La mariposa Monarca viaja hasta 4,000 kilómetros desde Canadá hasta los bosques de Michoacán en México.",
+            "El cerebro humano genera suficiente electricidad para encender un foco pequeño.",
+            "Sinaloa es conocido como 'El Granero de México' por su altísima producción agrícola."
+        ];
         
-        // 1. Datos simulados (Puedes reemplazarlos con el contenido real de tu Instagram/Revista)
-        const publicaciones = [
-            { titulo: "Elegancia Moderna", desc: "Descubre las tendencias que están definiendo el estándar del lujo este mes.", img: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" },
-            { titulo: "Arte y Cultura", desc: "Un recorrido visual por las exposiciones más deslumbrantes de la temporada.", img: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" },
-            { titulo: "Destinos Exclusivos", desc: "Los lugares imprescindibles que debes visitar para vivir una experiencia dorada.", img: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" }
+        // Selecciona un dato al azar
+        const datoAleatorio = datosCuriosos[Math.floor(Math.random() * datosCuriosos.length)];
+        document.getElementById('dato-del-dia').innerHTML = `<strong>Dato de hoy:</strong> ${datoAleatorio}`;
+
+        // --- 2. EFEMÉRIDES DE MÉXICO (Muestra algunas destacadas de Marzo como ejemplo) ---
+        const efemerides = [
+            { fecha: "18 Mar", evento: "Aniversario de la Expropiación Petrolera decretada por el presidente Lázaro Cárdenas en 1938." },
+            { fecha: "21 Mar", evento: "Natalicio de Benito Juárez, Benemérito de las Américas, nacido en 1806 en San Pablo Guelatao, Oaxaca." },
+            { fecha: "24 Mar", evento: "Incendio de la Cineteca Nacional en la Ciudad de México en 1982." }
         ];
 
-        const contenedor = document.getElementById('contenedor-articulos');
-
-        // 2. Renderizar las tarjetas dinámicamente
-        publicaciones.forEach(pub => {
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.innerHTML = `
-                <img src="${pub.img}" alt="${pub.titulo}">
-                <h3>${pub.titulo}</h3>
-                <p>${pub.desc}</p>
+        const contenedorEfemerides = document.getElementById('contenedor-efemerides');
+        
+        efemerides.forEach(efe => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <div class="fecha-badge">${efe.fecha}</div>
+                <div>${efe.evento}</div>
             `;
-            contenedor.appendChild(card);
-        });
-
-        // 3. Animación interactiva con JavaScript en el título principal
-        const titulo = document.getElementById('titulo-dinamico');
-        titulo.addEventListener('mouseover', () => {
-            titulo.style.color = '#ffffff';
-            titulo.style.textShadow = '0 0 20px #d4af37';
-        });
-        titulo.addEventListener('mouseout', () => {
-            titulo.style.color = '#d4af37';
-            titulo.style.textShadow = 'none';
+            contenedorEfemerides.appendChild(li);
         });
     });
 </script>
